@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farfatelier.fr - Nos Créations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+	
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="index.html">Accueil</a></li>
+			<li><a href="poterie.html">Poterie</a></li>
+			<li><a href="objets3d.html">Impression 3D</a></li>
+			<li><a href="contact.html">Contact</a></li>
+		</ul>
+	</nav>
+
+	<header>
+		<h1>Poteries Personnalisées</h1>
+		<p>Découvrez nos créations uniques où l'art de la poterie rencontre la peinture d'animaux et des assemblages originaux.</p>
+	</header>
+
+	<!-- Galerie d'images -->
+	<h2>Nos Créations</h2>
+	<div class="gallery-container">
+		<div class="gallery-item">
+			<img src="https://picsum.photos/400/400?random=1" alt="Poterie Peinte 1">
+			<h3>MAYA</h3>
+			<p class="short-description">Qui ne connait pas Maya l'abeille ? Cette création à été réalisé sur demande d'une petite fille. Oeuvre unique.<br><b> 25€</b></p>
+			<a href="#" class="button" onclick="openModal(this)">En savoir plus</a>
+		</div>
+		<div class="gallery-item">
+			<img src="https://picsum.photos/400/400?random=2" alt="Poterie Peinte 2">
+			<h3>Poterie 2</h3>
+			<p class="short-description">Poterie animal 2 <br><b>30€</b></p>
+			<a href="#" class="button" onclick="openModal(this)">En savoir plus</a>
+		</div>
+		<div class="gallery-item">
+			<img src="https://picsum.photos/400/400?random=3" alt="Poterie Peinte 3">
+			<h3>Poterie 3</h3>
+			<p class="short-description">Poterie animal 3<br><b>15€</b></p>
+			<a href="#" class="button" onclick="openModal(this)">En savoir plus</a>
+		</div>
+		<div class="gallery-item">
+			<img src="https://picsum.photos/400/400?random=4" alt="Poterie Peinte 1">
+			<h3>Poterie Renard</h3>
+			<p class="short-description">Pièce unique en terre cuite, peinte à la main, inspirée par la faune locale.<br><b>160€</b></p>
+			<a href="#" class="button" onclick="openModal(this)">En savoir plus</a>
+		</div>
+	</div>
+	
+	<!-- Carrousel d'images -->
+	<div class="carousel-container">
+		<div class="carousel-wrapper">
+		<button class="carousel-button prev" onclick="moveSlide(-1)" aria-label="Image précédente">&#10094;</button>
+			<div class="carousel-images">
+				<img src="https://picsum.photos/400/400?random=1" alt="Poterie 1">
+				<img src="https://picsum.photos/400/400?random=2" alt="Poterie 2">
+				<img src="https://picsum.photos/200/200?random=3" alt="Poterie 3">
+				<img src="https://picsum.photos/400/400?random=4" alt="Poterie 4">
+				<img src="https://picsum.photos/400/400?random=5" alt="Poterie 5">
+				<img src="https://picsum.photos/400/400?random=6" alt="Poterie 6">
+				<img src="https://picsum.photos/200/200?random=7" alt="Poterie 7">
+				<img src="https://picsum.photos/400/400?random=8" alt="Poterie 8">
+				<img src="https://picsum.photos/400/400?random=9" alt="Poterie 9">
+				<img src="https://picsum.photos/400/400?random=10" alt="Poterie 10">
+				<img src="https://picsum.photos/200/200?random=11" alt="Poterie 11">
+				<img src="https://picsum.photos/400/400?random=12" alt="Poterie 12">
+			</div>
+		</div>
+		<button class="carousel-button next" onclick="moveSlide(1)" aria-label="Image suivante">&#10095;</button>
+	</div>
+	<div class="carousel-dots" id="carouselDots"></div>
+
+	<div class="modal" id="modal">
+	  <div class="modal-content">
+		<span class="close" onclick="closeModal()">&times;</span>
+		<img id="modalImage" src="" alt="Image agrandie de la création" style="max-width: 100%; height: auto;">
+		<h2>Détails de la création</h2>
+		<p></p>
+	  </div>
+	</div>
+
+    <footer>
+        <p>&copy; 2025 Farfatelier.fr — Tous droits réservés.</p>
+    </footer>
+	
+	<script>
+    let currentIndex = 0;
+    let intervalId;
+
+    function moveSlide(step) {
+        const slides = document.querySelectorAll(".carousel-images img");
+        const total = slides.length;
+        currentIndex = (currentIndex + step + total) % total;
+        document.querySelector(".carousel-images").style.transform = `translateX(-${currentIndex * 100}%)`;
+		updateDots();
+    }
+
+	function goToSlide(index) {
+		currentIndex = index;
+		const slides = document.querySelectorAll(".carousel-images img");
+		document.querySelector(".carousel-images").style.transform = `translateX(-${currentIndex * 100}%)`;
+		updateDots();
+	}
+
+    function startAutoSlide() {
+        intervalId = setInterval(() => moveSlide(1), 2500); // 2.5 secondes
+    }
+
+    function stopAutoSlide() {
+        clearInterval(intervalId);
+    }
+	
+	function createDots() {
+		const slides = document.querySelectorAll(".carousel-images img");
+		const dotContainer = document.getElementById("carouselDots");
+		slides.forEach((_, index) => {
+			const dot = document.createElement("button");
+			dot.addEventListener("click", () => goToSlide(index));
+			dotContainer.appendChild(dot);
+		});
+	}
+
+	function updateDots() {
+		const dots = document.querySelectorAll("#carouselDots button");
+		dots.forEach((dot, index) => {
+			dot.classList.toggle("active", index === currentIndex);
+		});
+	}
+
+    // Démarre le carrousel automatiquement après chargement
+    window.addEventListener("DOMContentLoaded", () => {
+		createDots(); // <-- ajoute cette ligne
+		updateDots();
+        startAutoSlide();
+
+        const carousel = document.querySelector(".carousel-container");
+        carousel.addEventListener("mouseenter", stopAutoSlide);
+        carousel.addEventListener("mouseleave", startAutoSlide);
+    });
+	
+	function openModal(button) {
+		const item = button.closest(".gallery-item");
+		const title = item.querySelector("h3").textContent;
+		const description = item.querySelector("p").textContent;
+		const imageSrc = item.querySelector("img").src;
+		const imageAlt = item.querySelector("img").alt;
+
+		document.querySelector("#modal h2").textContent = title;
+		document.querySelector("#modal p").textContent = description;
+		document.getElementById("modalImage").src = imageSrc;
+		document.getElementById("modalImage").alt = imageAlt;
+		document.getElementById("modal").style.display = "flex";
+	}
+	
+	function closeModal() {
+		document.getElementById("modal").style.display = "none";
+	}
+	// Optionnel : fermer en cliquant en dehors
+	window.addEventListener("click", function(event) {
+		const modal = document.getElementById("modal");
+		if (event.target === modal) {
+			closeModal();
+		}
+	});
+</script>
+	
+</body>
+</html>
