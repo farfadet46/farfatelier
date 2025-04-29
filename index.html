@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farfatelier.fr - Nos Créations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        nav {
+            background-color: #4e342e;
+            padding: 1em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2em;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        header, section {
+            padding: 2em;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #4e342e;
+        }
+
+        section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 1em;
+        }
+
+        section p {
+            max-width: 800px;
+            margin: 1em auto;
+            line-height: 1.6;
+        }
+
+        a.button {
+            display: inline-block;
+            margin-top: 1em;
+            padding: 0.7em 1.5em;
+            background-color: #4e342e;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        a.button:hover {
+            background-color: #6d4c41;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            text-align: left;
+        }
+
+        input, textarea {
+            padding: 0.8em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        button {
+            padding: 0.8em;
+            background-color: #4e342e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #6d4c41;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background-color: #eee;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#poterie">Poterie</a></li>
+            <li><a href="#impression3d">Impression 3D</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header id="accueil">
+        <h1>Bienvenue chez Farfatelier</h1>
+        <p>Créations artisanales en poterie, impression 3D & découpe laser — fabriquées avec passion par deux créateurs complémentaires.</p>
+        <img src="https://picsum.photos/seed/accueil/1000/400" alt="Atelier d'artisanat">
+    </header>
+
+    <section id="poterie">
+        <h2>Poterie artisanale</h2>
+        <p>Chaque pièce est un hommage à la terre et au feu, peinte à la main avec soin pour révéler des motifs uniques.</p>
+        <img src="https://picsum.photos/seed/poterie/1000/400" alt="Poterie artisanale">
+        <a href="poteries.html" class="button">Voir le catalogue de poteries</a>
+    </section>
+
+    <section id="impression3d">
+        <h2>Objets en impression 3D & découpe laser</h2>
+        <p>Des objets design et modernes fabriqués avec précision, entre technologie de pointe et esthétique artisanale.</p>
+        <img src="https://picsum.photos/seed/impression3d/1000/400" alt="Objets en impression 3D">
+        <a href="objets3d.html" class="button">Voir le catalogue 3D & laser</a>
+    </section>
+
+    <section id="contact">
+        <h2>Contactez-nous</h2>
+        <p>Envie d'une création sur mesure ? Écrivez-nous via le formulaire ci-dessous.</p>
+        <form action="mailto:votremail@exemple.com" method="post" enctype="text/plain">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" placeholder="Votre nom" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" placeholder="Votre adresse email" required>
+
+            <label for="subject">Sujet :</label>
+            <input type="text" id="subject" name="subject" placeholder="Sujet" required>
+
+            <label for="message">Message :</label>
+            <textarea id="message" name="message" placeholder="Votre message" required></textarea>
+
+            <button type="submit">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Farfatelier.fr — Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
+
